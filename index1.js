@@ -1,9 +1,7 @@
 // const images = require('./images')
 import images from "./images.js";
-// import {puppeteer} from '/puppeteer';
-const urlSearchParams = new URLSearchParams(window.location.search);
-const params = Object.fromEntries(urlSearchParams.entries());
-console.log(params)
+
+// export default function pageLayout() {
 var active = 0; //Active element position
 const list = document.querySelector(".list") //get element with class list
 
@@ -16,12 +14,12 @@ const listContentWithHTML = images.map((image, index) => {
     // if(image.title.length <= 31){   
     return (
         `<div class="list-content">
-                    <img src=${image.previewImage} alt="${image.title}"></img>
+                        <img src=${image.previewImage} alt="${image.title}"></img>
+                        
+                        <p>${image.title.slice(0, image.title.length / 2)}</p>
+                        <p>${image.title.slice(image.title.length / 2)}</p>
                     
-                    <p>${image.title.slice(0, image.title.length / 2)}</p>
-                    <p>${image.title.slice(image.title.length / 2)}</p>
-                
-            </div>`
+                </div>`
     );
 }).join(" ")
 
@@ -74,8 +72,9 @@ window.addEventListener("keydown", function (e) {
     bigImg.setAttribute("src", images[active].previewImage)
     belowText.textContent = images[active].title;
 })
-
-// console.log(images[3].title.length)
 // }
+
+
+
 
 

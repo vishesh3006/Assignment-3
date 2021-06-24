@@ -25,8 +25,25 @@
             <p>Cat.jpeg</p>
         </div>
     </section>
-    <script type="module" src="index1.js" id="hello"></script>
-    <script type="module" src="index2.js"></script>
+    <script type="module" src="index1.js"></script>
+
+    <script type="module">
+        // import images from './images.js'
+        window.addEventListener('load', () => {
+            // import images from './images.js'
+            // console.log('hello 1')
+            const urlSearchParams = new URLSearchParams(window.location.search);
+            const params = Object.fromEntries(urlSearchParams.entries());
+            if (params.pdf) {
+                import('./index2.js').then((file) => {
+                    // console.log(file)
+                    file.default();
+                })
+            }
+        });
+
+
+    </script>
 </body>
 
 </html>
